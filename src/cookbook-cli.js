@@ -31,9 +31,11 @@ class CookbookCli {
     if (result !== true) {
       this.cookbook.addRecipe(name, ingredients);
       console.log(`Successfully added the following recipe: ${name}`);
+      return result;
     }
     else {
       console.log(`Oops! Sorry, the recipe for ${name} already exists on this cookbook.`);
+      return result;
     }
   }
 
@@ -53,21 +55,15 @@ class CookbookCli {
     if (result === true) {
       this.cookbook.removeRecipe(name);
       console.log(`Successfully removed the following recipe: ${name}`);
+      return result;
     }
     else {
       console.log(`Oops! ${name}'s recipe that you're trying to remove does not exist on this cookbook.`);
+      return result;
     }
   }
 }
 
 module.exports = { CookbookCli };
-
-const recipeCookbook = new Cookbook();
-const myrecipe = new CookbookCli(recipeCookbook);
-
-
-myrecipe.add('bread', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
-myrecipe.add('pizza', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
-myrecipe.remove('bread');
 
 
