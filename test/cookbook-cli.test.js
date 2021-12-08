@@ -4,13 +4,18 @@ const { CookbookCli } = require('../src/cookbook-cli');
 describe('CookbookCli', () => {
   describe('Adding recipes', () => {
     test('should accept the recipe information and display the correct message', () => {
+      const myrecipeCookbook = new Cookbook();
+      const myCookbookCli = new CookbookCli(myrecipeCookbook);
 
+      const message = myCookbookCli.add('spaghetti', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
+
+      expect(message).toEqual(`Successfully added the following recipe: spaghetti`);
     });
   });
 
   describe('Listing recipes', () => {
     test('should display the correct message listing all of the recipe names', () => {
-
+   
     });
   });
 
