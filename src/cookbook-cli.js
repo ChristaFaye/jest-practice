@@ -25,15 +25,15 @@ class CookbookCli {
     }
   }
 
-  add(name, ingredients) {
-    var recipes = this.cookbook.addRecipe(name, ingredients);
-    let result = recipes.includes(`${name}`);
-    //let result = recipe.indexOf(`${name}`);
-    if (result !== false) {
-      return `Successfully added the following recipe: ${name}`;
+  add(name, ingredients) { 
+    let recipes = this.cookbook.listRecipes();
+    let result = recipes.includes(name);
+    if (result !== true) {
+      this.cookbook.addRecipe(name, ingredients);
+      console.log(`Successfully added the following recipe: ${name}`);
     }
     else {
-      return `Oops! The recipe you're trying to add already exists on this cookbook.`
+      console.log(`Oops! Sorry, the recipe for ${name} already exists on this cookbook.`);
     }
   }
 
@@ -58,7 +58,9 @@ module.exports = { CookbookCli };
 const recipeCookbook = new Cookbook();
 const myrecipe = new CookbookCli(recipeCookbook);
 
+
 myrecipe.add('bread', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
-//myrecipe.add('pizza', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
+myrecipe.add('pizza', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
+myrecipe.add('bread', ['beef']);
 
 
