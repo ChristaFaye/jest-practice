@@ -22,11 +22,11 @@ class Cookbook {
 
 module.exports = { Cookbook };
 
-const recipeCookbook = new Cookbook();
+// const recipeCookbook = new Cookbook();
 
 
-recipeCookbook.addRecipe('spaghetti', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
+// recipeCookbook.addRecipe('spaghetti', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
 
-console.log(recipeCookbook.listRecipes());
-console.log(recipeCookbook.removeRecipe('spaghetti'));
-console.log(recipeCookbook.listRecipes());
+// console.log(recipeCookbook.listRecipes());
+// console.log(recipeCookbook.removeRecipe('spaghetti'));
+// console.log(recipeCookbook.listRecipes());

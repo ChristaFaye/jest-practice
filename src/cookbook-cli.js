@@ -16,7 +16,13 @@ class CookbookCli {
   }
 
   list() {
-    return `You have the following recipes: ${this.cookbook.listRecipes().join(',')}`;
+    let recipe = this.cookbook.listRecipes();
+    if (recipe.length !== 0){
+      return `You have the following recipes: ${this.cookbook.listRecipes().join(',')}`;
+    }
+    else {
+      return `Oops! No recipe is existing on this cookbook.`
+    }
   }
 
   add(name, ingredients) {
@@ -27,7 +33,7 @@ class CookbookCli {
   get(name) {
     let recipe = this.cookbook.getRecipe(name);
     if (recipe !== undefined){
-    return `The ingredients for ${name} are: ${this.cookbook.getRecipe(name)}`;
+      return `The ingredients for ${name} are: ${this.cookbook.getRecipe(name)}`;
     }
     else {
       return `Oops! ${name}'s recipe is not existing on this cookbook.'`
@@ -46,5 +52,6 @@ const recipeCookbook = new Cookbook();
 const myrecipe = new CookbookCli(recipeCookbook);
 
 myrecipe.add('spaghetti', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
-console.log(myrecipe.get('bread'));
+myrecipe.add('pizza', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
+console.log(myrecipe.list());
 
