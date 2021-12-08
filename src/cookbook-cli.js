@@ -1,3 +1,5 @@
+const { Cookbook } = require("./cookbook");
+
 class CookbookCli {
   constructor(cookbook) {
     this.cookbook = cookbook;
@@ -23,7 +25,13 @@ class CookbookCli {
   }
 
   get(name) {
+    let recipe = this.cookbook.getRecipe(name);
+    if (recipe !== undefined){
     return `The ingredients for ${name} are: ${this.cookbook.getRecipe(name)}`;
+    }
+    else {
+      return `Oops! ${name}'s recipe is not existing on this cookbook.'`
+    }
   }
 
   remove(name) {
@@ -33,3 +41,10 @@ class CookbookCli {
 }
 
 module.exports = { CookbookCli };
+
+const recipeCookbook = new Cookbook();
+const myrecipe = new CookbookCli(recipeCookbook);
+
+myrecipe.add('spaghetti', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
+console.log(myrecipe.get('bread'));
+
