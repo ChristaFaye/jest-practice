@@ -43,13 +43,20 @@ class CookbookCli {
       return `The ingredients for ${name} are: ${this.cookbook.getRecipe(name)}`;
     }
     else {
-      return `Oops! ${name}'s recipe is not existing on this cookbook.'`
+      return `Oops! ${name}'s recipe does not exist on this cookbook.`
     }
   }
 
   remove(name) {
-    this.cookbook.removeRecipe(name);
-    return `Successfully removed the following recipe: ${name}`;
+    let recipes = this.cookbook.listRecipes();
+    let result = recipes.includes(name);
+    if (result === true) {
+      this.cookbook.removeRecipe(name);
+      console.log(`Successfully removed the following recipe: ${name}`);
+    }
+    else {
+      console.log(`Oops! ${name}'s recipe that you're trying to remove does not exist on this cookbook.`);
+    }
   }
 }
 
@@ -61,6 +68,6 @@ const myrecipe = new CookbookCli(recipeCookbook);
 
 myrecipe.add('bread', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
 myrecipe.add('pizza', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
-myrecipe.add('bread', ['beef']);
+myrecipe.remove('bread');
 
 
