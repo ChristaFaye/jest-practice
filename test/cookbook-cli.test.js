@@ -39,7 +39,13 @@ describe('CookbookCli', () => {
 
   describe('Deleting a recipe', () => {
     test('should accept the recipe name and display the correct message', () => {
+      const myrecipeCookbook = new Cookbook();
+      const myCookbookCli = new CookbookCli(myrecipeCookbook);
 
+      myCookbookCli.add('spaghetti', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
+      const message = myCookbookCli.remove('spaghetti');
+
+      expect(message).toEqual(`Successfully removed the following recipe: spaghetti`);
     });
   });
 });
