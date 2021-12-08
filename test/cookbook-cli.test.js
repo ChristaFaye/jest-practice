@@ -27,7 +27,13 @@ describe('CookbookCli', () => {
 
   describe('Retrieving a recipe', () => {
     test('should display the ingredients required to make the specified recipe', () => {
+      const myrecipeCookbook = new Cookbook();
+      const myCookbookCli = new CookbookCli(myrecipeCookbook);
 
+      myCookbookCli.add('spaghetti', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
+      const message = myCookbookCli.get('spaghetti');
+
+      expect(message).toEqual(`The ingredients for spaghetti are: beef,pasta noodles,mushroom,tomato sauce,onion,cheese`);
     });
   });
 
