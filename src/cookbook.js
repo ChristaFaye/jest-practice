@@ -21,3 +21,11 @@ class Cookbook {
 }
 
 module.exports = { Cookbook };
+
+const spagRecipe = new Cookbook();
+console.log(spagRecipe);
+
+spagRecipe.addRecipe('spaghetti', ['beef', 'pasta noodles', 'mushroom', 'tomato sauce', 'onion', 'cheese']);
+
+console.log(spagRecipe.listRecipes());
+console.log(spagRecipe.getRecipe('spaghetti'));
